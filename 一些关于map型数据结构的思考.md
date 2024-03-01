@@ -1,7 +1,7 @@
 # 2024.03.01
 #### map型数据结构
     在编程中，键值对是一种比较常见的数据结构。
-    在Java中叫map， JavaScript中叫对象，Python则称为字典。
+    在Java中叫map， JavaScript中叫object，Python则称为dict。
     其底层实现各不相同，但是实现的效果却是大同小异的，都是为了实现快速查询。
     在nosql中同样也用到了这种结构。
 
