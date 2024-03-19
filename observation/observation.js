@@ -54,18 +54,25 @@ function TraceMsg() {
 
 function defaultCB(...args) {
     console.log("=====================================")
-    console.log(args);
-    console.trace();
+    fs.appendFileSync(addr, args, () => {});
+    TraceMsg()
     console.log("=====================================")
+}
+
+function kvCallBack(key, value) {
+    fs.appendFileSync(addr, JSON.stringify({ key, value })+"\n", () => {});
+    TraceMsg()
 }
 
 // =========================================================================
 
-function observe(obj, callback=defaultCB) {
+function observe(obj, filter=null, callback=kvCallBack) {
     return new Proxy(obj, {
         set(target, key, value, receiver) {
             const result = Reflect.set(target, key, value, receiver);
-            callback(key, value);
+            if (filter && filter(key)) {
+                callback(key, value);
+            }
             return result;
         },
         get(target, key, receiver){
