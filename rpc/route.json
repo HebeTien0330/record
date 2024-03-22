@@ -1,0 +1,4 @@
+{
+    "1001": {"name": "center", "type": "center", "ip": "localhost", "port": 6001, "params": {}},
+    "2001": {"name": "game-1", "type": "game", "ip": "localhost", "port": 7001, "params": {}}
+}
